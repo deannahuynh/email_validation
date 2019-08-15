@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+    form {
+        margin: 100px auto;
+        width: 600px;
+    }
+    #flashes {
+        background-color: red;
+        margin: 40px auto;
+        width: 30%;
+        border: 2px solid black;
+        text-align: center;
+    }
+    #flashes p {
+        color: white;
+        margin-top: 14px;
+        font-size: 25px;
+    }
+    </style>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div id="flashes">
+                {% for message in messages %}
+                    <p>{{ messages }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    <form action="/process" method="POST">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input name="email" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</body>
+</html>
